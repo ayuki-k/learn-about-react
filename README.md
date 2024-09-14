@@ -15,11 +15,17 @@ Learn about react, next
 - [DockerでReact環境構築【2023】](https://qiita.com/aka_ebi/items/79dd54982aeeb72aecf6)
 
 
-
+Reactの場合
 ```
 docker-compose run --rm app sh -c 'npx create-react-app react-app --template typescript'
 ```
 
+React + Viteの場合
 ```
 docker-compose run --rm app sh -c 'npm create vite@latest react-app -- --template react'
+```
+
+
+```
+docker compose -f docker-compose-react.yml up
 ```

@@ -7,13 +7,13 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "10000:3000"
+      - "10000:5173"
     volumes:
       - type: bind
         source: ./app
         target: /usr/src/app
     environment:
       - NODE_ENV=development
-    command: sh -c "cd react-app && yarn start"
+    command: sh -c "cd react-app && npm install && npm run dev"
     stdin_open: true
 
