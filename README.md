@@ -15,12 +15,21 @@ Learn about react, next
 - [DockerでReact環境構築【2023】](https://qiita.com/aka_ebi/items/79dd54982aeeb72aecf6)
 
 
-Reactの場合
+#　React の場合
+まずはじめに，Docker, docker-compose-vite.ymlファイルを元にして，コンテナを作成する．
+`-f docker-compose-vite.yml`と指定しているのは，特別に名前を与えているため．
+（docker-compose.ymlなら指定しなくても良い．）
 ```
-docker-compose run --rm app sh -c 'npx create-react-app react-app --template typescript'
+docker compose -f docker-compose-vite.yml build
+docker compose -f docker-compose-vite.yml up -d
 ```
 
-##React + Viteの場合
+docker containerの中にアプリを作る方法
+```
+docker-compose -f docker-compose-react.yml run --rm app sh -c 'npx create-react-app react-app --template typescript'
+```
+
+#　React + Vite の場合
 まずはじめに，Docker, docker-compose-vite.ymlファイルを元にして，コンテナを作成する．
 `-f docker-compose-vite.yml`と指定しているのは，特別に名前を与えているため．
 （docker-compose.ymlなら指定しなくても良い．）
@@ -34,7 +43,7 @@ docker containerの中にアプリを作る方法
 docker-compose -f docker-compose-vite.yml run --rm app sh -c 'npm create vite@latest react-app -- --template react'
 ```
 
-コンテナ内のサイトにアクセスする方法
+## コンテナ内のサイトにアクセスする方法
 ```vite:vite.config.js
   plugins: [react()],
   server: {
