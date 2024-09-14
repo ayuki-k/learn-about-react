@@ -20,12 +20,26 @@ Reactの場合
 docker-compose run --rm app sh -c 'npx create-react-app react-app --template typescript'
 ```
 
-React + Viteの場合
+##React + Viteの場合
+まずはじめに，Docker, docker-compose-vite.ymlファイルを元にして，コンテナを作成する．
+`-f docker-compose-vite.yml`と指定しているのは，特別に名前を与えているため．
+（docker-compose.ymlなら指定しなくても良い．）
 ```
-docker-compose run --rm app sh -c 'npm create vite@latest react-app -- --template react'
+docker compose -f docker-compose-vite.yml build
+docker compose -f docker-compose-vite.yml up -d
 ```
 
-
+docker containerの中にアプリを作る方法
 ```
-docker compose -f docker-compose-react.yml up
+docker-compose -f docker-compose-vite.yml run --rm app sh -c 'npm create vite@latest react-app -- --template react'
+```
+
+コンテナ内のサイトにアクセスする方法
+```vite:vite.config.js
+  plugins: [react()],
+  server: {
+    port: 5173,        // 使用するポート
+    host: '0.0.0.0',   // コンテナ内の全てのネットワークインターフェースからアクセスを許可
+    strictPort: true,  // ポートが利用できない場合に自動で変更しない
+  },
 ```
