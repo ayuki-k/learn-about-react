@@ -43,6 +43,16 @@ docker containerの中にアプリを作る方法
 docker-compose -f docker-compose-vite.yml run --rm app sh -c 'npm create vite@latest react-app -- --template react'
 ```
 
+docker containerの中に入る方法
+```
+docker compose -f docker-compose-vite.yml exec {app} bash
+```
+
+```
+npm install
+```
+
+
 ## コンテナ内のサイトにアクセスする方法
 ```vite:vite.config.js
   plugins: [react()],
@@ -52,3 +62,5 @@ docker-compose -f docker-compose-vite.yml run --rm app sh -c 'npm create vite@la
     strictPort: true,  // ポートが利用できない場合に自動で変更しない
   },
 ```
+
+

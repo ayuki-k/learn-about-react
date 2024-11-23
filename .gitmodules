@@ -1,0 +1,7 @@
+[submodule "app/app"]
+	path = app/line-richmenu-editor
+	url = https://github.com/e-chan1007/line-richmenu-editor.git
+	branch = main
+[submodule "app/next-react-website"]
+	path = app/next-react-website
+	url = https://github.com/ebisucom/next-react-website.git

@@ -2,18 +2,18 @@ version: "3.9"
 
 services:
   app:
-    container_name: app
+    container_name: app-vite
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "10000:5173"
+      - "10001:5173"
     volumes:
       - type: bind
         source: ./app
         target: /usr/src/app
     environment:
       - NODE_ENV=development
-    # command: sh -c "cd react-app && npm install && npm run dev"
+    # command: sh -c "cd react-app && npm install && npm run dev -- --host"
     stdin_open: true
 
